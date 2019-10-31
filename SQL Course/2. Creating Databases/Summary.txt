@@ -1,0 +1,7 @@
+The SQL command to create a table is CREATE TABLE
+A Data Definition Language(DDL) is used to define the structure of a relation, deleting relations and used to relate schemas.
+The statement create table temp_instructor like instructor - creates a new table temp instructor that has the same schema as instructor.
+The statement table employee(name varchar, id integer); is a Data definition language statement.
+
+
+
