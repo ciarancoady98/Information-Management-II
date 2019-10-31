@@ -1,0 +1,22 @@
+Definitions:
+SQL is a data sublanguage.
+The term table is the same as relation.
+Row is synonymous with the term record or tuple.
+A Key uniquely identifies a row.
+A primary key is selected from candidate keys.
+An attribute of a relation is a column of a table.
+Lob stands for large object, Blob (binary large object) can be used to store movie and image files.
+
+DBMS:
+The Database Management System DBMS is an interface between the database application and the database
+A DBMS can be used to create databases and process data.
+
+SQL:
+SQL was designed to define data structures and specify the syntax and semantics of SQL data definition language.
+In a relational model, relationships between relations or tables are created by using foreign keys.
+SQL can be used to create database structures and query or modify database data.
+Examples of built in sql functions include COUNT, MAX, MIN, SUM, AVG.
+The SELECT statement can be used to query data from a table.
+In SQL dates must be specified in the format yyyy/mm/dd
+A user defined type can be created using the create type statement.
+Values can be converted from one domain to another using the cast statement.
