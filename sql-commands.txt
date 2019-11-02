@@ -13,3 +13,11 @@ DROP TABLE cs_course_modules;
 INSERT INTO cs_course_modules (module_name, module_id, etc, lecture_hours, semester_taught) VALUES ('Information Management II', 'CS3041', 5, 33, 'first semester');
 UPDATE cs_course_modules SET module_id = 'CS4D2A', lecture_hours = 27 WHERE module_id = 'CS3041';
 DELETE FROM cs_course_modules WHERE module_id = 'CS4D2A';
+
+SELECT module_name FROM cs_course_modules WHERE module_id LIKE 'CS1%';
+SELECT module_name FROM cs_course_modules WHERE module_id LIKE 'CS1%' ORDER BY module_name DESC;
+SELECT module_name, module_id FROM cs_course_modules WHERE lecture_hours < 33;
+SELECT SUM(lecture_hours) FROM cs_course_modules WHERE module_id LIKE 'CS2%';
+SELECT module_name FROM cs_course_modules;
+SELECT module_name FROM cs_course_modules WHERE lecture_hours = (SELECT MIN(lecture_hours) FROM cs_course_modules);
+SELECT module_name FROM cs_course_modules WHERE lecture_hours IN (SELECT MIN(lecture_hours) FROM cs_course_modules);
