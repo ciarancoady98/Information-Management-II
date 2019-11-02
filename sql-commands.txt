@@ -4,3 +4,12 @@ show tables;
 CREATE TABLE table_name (column1 datatype, column2 datatype);
 INSERT INTO table_name (column1, column2) VALUES (value1, value2);
 SELECT name, id FROM Students WHERE address = "Dublin";
+
+CREATE TABLE cs_course_modules (module_name varchar(50) NOT NULL, module_id varchar(10) NOT NULL, etc int NOT NULL, lecture_hours int NOT NULL, PRIMARY KEY (module_id));
+CREATE TABLE cs_course_modules (module_name varchar(50) NOT NULL, module_id varchar(10) NOT NULL PRIMARY KEY, etc int NOT NULL, lecture_hours int NOT NULL);
+ALTER TABLE cs_course_modules ADD semester_taught varchar(15) NOT NULL;
+DROP TABLE cs_course_modules;
+
+INSERT INTO cs_course_modules (module_name, module_id, etc, lecture_hours, semester_taught) VALUES ('Information Management II', 'CS3041', 5, 33, 'first semester');
+UPDATE cs_course_modules SET module_id = 'CS4D2A', lecture_hours = 27 WHERE module_id = 'CS3041';
+DELETE FROM cs_course_modules WHERE module_id = 'CS4D2A';
