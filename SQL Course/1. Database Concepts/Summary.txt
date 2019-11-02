@@ -1,3 +1,5 @@
+Information from mcq
+
 Definitions:
 SQL is a data sublanguage.
 The term table is the same as relation.
@@ -20,3 +22,4 @@ The SELECT statement can be used to query data from a table.
 In SQL dates must be specified in the format yyyy/mm/dd
 A user defined type can be created using the create type statement.
 Values can be converted from one domain to another using the cast statement.
+
