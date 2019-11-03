@@ -21,3 +21,6 @@ SELECT SUM(lecture_hours) FROM cs_course_modules WHERE module_id LIKE 'CS2%';
 SELECT module_name FROM cs_course_modules;
 SELECT module_name FROM cs_course_modules WHERE lecture_hours = (SELECT MIN(lecture_hours) FROM cs_course_modules);
 SELECT module_name FROM cs_course_modules WHERE lecture_hours IN (SELECT MIN(lecture_hours) FROM cs_course_modules);
+
+CREATE VIEW shared_modules (module_name, module_id) AS SELECT cs_course_modules.module_name, cs_course_modules.module_id FROM cs_course_modules, eng_course_modules WHERE cs_course_modules.module_id = eng_course_modules.module_id;
+SELECT cs_course_modules.module_name, cs_course_modules.module_id FROM cs_course_modules, eng_course_modules WHERE cs_course_modules.module_id = eng_course_modules.module_id;
