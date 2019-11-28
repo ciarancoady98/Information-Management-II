@@ -8,7 +8,7 @@ CREATE TABLE motherboard (
     ram_type varchar(4) NOT NULL, 
     form_factor varchar(5) NOT NULL, 
     socket varchar(10) NOT NULL,
-    PRIMARY KEY (serial_number),
+    PRIMARY KEY (serial_number)
     );
 
 CREATE TABLE central_processing_unit (
@@ -33,7 +33,12 @@ CREATE TABLE cpu_cooler (
     fan_rpm int NOT NULL, 
     noise_level int NOT NULL, 
     socket varchar(10) NOT NULL,
-    PRIMARY KEY (serial_number));
+    PRIMARY KEY (serial_number),
+    FOREIGN KEY (motherboard_sn) 
+    REFERENCES motherboard(serial_number)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+    );
 
 CREATE TABLE graphics_processing_unit (
     serial_number varchar(10) NOT NULL, 
@@ -42,7 +47,12 @@ CREATE TABLE graphics_processing_unit (
     core_clock int NOT NULL, 
     memory int NOT NULL, 
     gpu_length int NOT NULL,
-    PRIMARY KEY (serial_number));
+    PRIMARY KEY (serial_number),
+    FOREIGN KEY (motherboard_sn) 
+    REFERENCES motherboard(serial_number)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+    );
 
 CREATE TABLE computer_case (
     serial_number varchar(10) NOT NULL, 
@@ -51,7 +61,16 @@ CREATE TABLE computer_case (
     psu_sn varchar(10) NOT NULL, 
     gpu_space int NOT NULL, 
     storage_bays int NOT NULL,
-    PRIMARY KEY (serial_number));
+    PRIMARY KEY (serial_number),
+    FOREIGN KEY (motherboard_sn) 
+    REFERENCES motherboard(serial_number)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    FOREIGN KEY (psu_sn) 
+    REFERENCES motherboard(serial_number)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+    );
 
 CREATE TABLE power_supply (
     serial_number varchar(10) NOT NULL, 
@@ -60,7 +79,8 @@ CREATE TABLE power_supply (
     modular int NOT NULL, 
     efficiency_rating int NOT NULL, 
     form_factor varchar(4) NOT NULL,
-    PRIMARY KEY (serial_number));
+    PRIMARY KEY (serial_number)
+    );
 
 CREATE TABLE storage_drive (
     serial_number varchar(10) NOT NULL, 
@@ -69,7 +89,12 @@ CREATE TABLE storage_drive (
     capacity int NOT NULL, 
     interface varchar(4) NOT NULL, 
     form_factor varchar(4) NOT NULL,
-    PRIMARY KEY (serial_number));
+    PRIMARY KEY (serial_number),
+    FOREIGN KEY (case_sn) 
+    REFERENCES motherboard(serial_number)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+    );
 
 CREATE TABLE random_access_memory (
     serial_number varchar(10) NOT NULL, 
@@ -78,7 +103,12 @@ CREATE TABLE random_access_memory (
     capacity int NOT NULL, 
     number_of_modules int NOT NULL, 
     type varchar(4) NOT NULL,
-    PRIMARY KEY (serial_number));
+    PRIMARY KEY (serial_number),
+    FOREIGN KEY (motherboard_sn) 
+    REFERENCES motherboard(serial_number)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+    );
 
 CREATE TABLE cooling (
     cpu_sn varchar(10) NOT NULL, 
