@@ -132,7 +132,19 @@ INSERT INTO motherboard (
     serial_number, name , ram_slots, ram_type, form_factor, socket) 
     VALUES ("M123456785", "Aorus pro ac wifi ", 2, "ddr4", "m-itx", "am4");
 
-#Insert entries into the 
-INSERT INTO motherboard (
-    serial_number, name , ram_slots, ram_type, form_factor, socket) 
-    VALUES ("M123456781", "Asus Prime x370", 4, "ddr4", "atx", "am4");
+#Insert entries into the cpu table
+INSERT INTO central_processing_unit (
+    serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
+    VALUES ("C123456781", "Amd Ryzen 5 1600", "M123456781", 65, 6, "yes", "am4");
+INSERT INTO central_processing_unit (
+    serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
+    VALUES ("C123456782", "Intel Core i5 3570k", "M123456782", 77, 4, "no", "lga1155");
+INSERT INTO central_processing_unit (
+    serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
+    VALUES ("C123456783", "Intel Core i7 5820k", "M123456783", 140, 6, "yes", "lga2011v3");
+INSERT INTO central_processing_unit (
+    serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
+    VALUES ("C123456784", "Amd Threadripper 3970X", "M123456784", 280 , 32, "yes", "tr4");
+INSERT INTO central_processing_unit (
+    serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
+    VALUES ("C123456785", "Amd Ryzen 7 1800x", "M123456785", 95, 8, "yes", "am4");
