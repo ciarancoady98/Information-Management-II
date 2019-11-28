@@ -148,3 +148,20 @@ INSERT INTO central_processing_unit (
 INSERT INTO central_processing_unit (
     serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
     VALUES ("C123456785", "Amd Ryzen 7 1800x", "M123456785", 95, 8, "yes", "am4");
+
+#Insert entries into the cpu cooler table
+INSERT INTO cpu_cooler (
+    serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
+    VALUES ("CC12345671", "Corsair h100i", "M123456781", 2200, 20, "am4");
+INSERT INTO cpu_cooler (
+    serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
+    VALUES ("CC12345672", "Intel Stock Cooler", "M123456782", 1200, 30, "lga1155");
+INSERT INTO cpu_cooler (
+    serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
+    VALUES ("CC12345673", "EK Supremecy Evo", "M123456783", 2200, 15, "lga2011v3");
+INSERT INTO cpu_cooler (
+    serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
+    VALUES ("CC12345674", "Dual stack noctua cooler", "M123456784", 1800, 35, "tr4");
+INSERT INTO cpu_cooler (
+    serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
+    VALUES ("CC12345675", "NZXT Kraken", "M123456785", 2200, 20, "am4");
