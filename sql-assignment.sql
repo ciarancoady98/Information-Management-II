@@ -114,3 +114,25 @@ CREATE TABLE cooling (
     cpu_sn varchar(10) NOT NULL, 
     cooler_sn varchar(50) NOT NULL,
     PRIMARY KEY (cpu_sn, cooler_sn));
+
+#Insert entries into the motherboard table
+INSERT INTO motherboard (
+    serial_number, name , ram_slots, ram_type, form_factor, socket) 
+    VALUES ("M123456781", "Asus Prime x370", 4, "ddr4", "atx", "am4");
+INSERT INTO motherboard (
+    serial_number, name , ram_slots, ram_type, form_factor, socket) 
+    VALUES ("M123456782", "Gigabyte ds3h", 4, "ddr3", "atx", "lga1155");
+INSERT INTO motherboard (
+    serial_number, name , ram_slots, ram_type, form_factor, socket) 
+    VALUES ("M123456783", "Asus x99-pro", 8, "ddr4", "atx", "lga2011v3");
+INSERT INTO motherboard (
+    serial_number, name , ram_slots, ram_type, form_factor, socket) 
+    VALUES ("M123456784", "Aus ROG Zenith Extreme", 8, "ddr4", "e-atx", "tr4");
+INSERT INTO motherboard (
+    serial_number, name , ram_slots, ram_type, form_factor, socket) 
+    VALUES ("M123456785", "Aorus pro ac wifi ", 2, "ddr4", "m-itx", "am4");
+
+#Insert entries into the 
+INSERT INTO motherboard (
+    serial_number, name , ram_slots, ram_type, form_factor, socket) 
+    VALUES ("M123456781", "Asus Prime x370", 4, "ddr4", "atx", "am4");
