@@ -1,3 +1,5 @@
+CREATE SCHEMA databasename DEFAULT CHARACTER SET characterset;
+
 SHOW DATABASES;
 USE databasename;
 show tables;
