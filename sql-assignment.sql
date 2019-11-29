@@ -88,10 +88,10 @@ CREATE TABLE storage_drive (
     case_sn varchar(10) NOT NULL, 
     capacity int NOT NULL, 
     interface varchar(4) NOT NULL, 
-    form_factor varchar(4) NOT NULL,
+    form_factor varchar(7) NOT NULL,
     PRIMARY KEY (serial_number),
     FOREIGN KEY (case_sn) 
-    REFERENCES motherboard(serial_number)
+    REFERENCES computer_case(serial_number)
     ON DELETE CASCADE
     ON UPDATE CASCADE
     );
@@ -216,3 +216,21 @@ INSERT INTO computer_case (
 INSERT INTO computer_case (
     serial_number, name, motherboard_sn, psu_sn, gpu_space, storage_bays)
     VALUES ("CE12345675", "Ncase M1", "M123456785", "P123456785", "280", "2.5inch");
+
+
+#Insert entries into the storage table
+INSERT INTO storage_drive (
+    serial_number, name, case_sn, capacity, interface, form_factor)
+    VALUES ("S123456781", "Samsung 850 Evo", "CE12345671", 500, "sata", "2.5inch");
+INSERT INTO storage_drive (
+    serial_number, name, case_sn, capacity, interface, form_factor)
+    VALUES ("S123456782", "Western Digital Caviar Green 1tb", "CE12345672", 1000, "sata", "3.5inch");
+INSERT INTO storage_drive (
+    serial_number, name, case_sn, capacity, interface, form_factor)
+    VALUES ("S123456783", "Seagate Barracuda 2tb", "CE12345673", 2000, "sata", "3.5inch");
+INSERT INTO storage_drive (
+    serial_number, name, case_sn, capacity, interface, form_factor)
+    VALUES ("S123456784", "Samsung HD105SI", "CE12345674", 1000, "sata", "3.5inch");
+INSERT INTO storage_drive (
+    serial_number, name, case_sn, capacity, interface, form_factor)
+    VALUES ("S123456785", "Intel 730", "CE12345675", 240, "sata", "2.5inch");
