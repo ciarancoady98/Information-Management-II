@@ -15,7 +15,7 @@ CREATE TABLE motherboard (
 
 CREATE TABLE central_processing_unit (
     serial_number varchar(12) NOT NULL, 
-    name varchar(50) NOT NULL, 
+    name varchar(50), 
     motherboard_sn varchar(12) NOT NULL,
     tdp int NOT NULL, 
     core_count int NOT NULL CHECK (core_count > 0), 
@@ -30,7 +30,7 @@ CREATE TABLE central_processing_unit (
 
 CREATE TABLE cpu_cooler (
     serial_number varchar(12) NOT NULL, 
-    name varchar(50) NOT NULL, 
+    name varchar(50), 
     motherboard_sn varchar(12) NOT NULL, 
     fan_rpm int NOT NULL, 
     noise_level int NOT NULL, 
@@ -44,7 +44,7 @@ CREATE TABLE cpu_cooler (
 
 CREATE TABLE graphics_processing_unit (
     serial_number varchar(12) NOT NULL, 
-    name varchar(50) NOT NULL, 
+    name varchar(50), 
     motherboard_sn varchar(12) NOT NULL, 
     core_clock int NOT NULL, 
     memory int NOT NULL, 
@@ -58,7 +58,7 @@ CREATE TABLE graphics_processing_unit (
 
 CREATE TABLE power_supply (
     serial_number varchar(12) NOT NULL, 
-    name varchar(50) NOT NULL, 
+    name varchar(50), 
     wattage int NOT NULL, 
     modular varchar(3) NOT NULL, 
     efficiency_rating varchar(8) NOT NULL, 
@@ -68,7 +68,7 @@ CREATE TABLE power_supply (
 
 CREATE TABLE computer_case (
     serial_number varchar(12) NOT NULL, 
-    name varchar(50) NOT NULL, 
+    name varchar(50), 
     motherboard_sn varchar(12) NOT NULL, 
     psu_sn varchar(12) NOT NULL, 
     gpu_space int NOT NULL, 
@@ -86,7 +86,7 @@ CREATE TABLE computer_case (
 
 CREATE TABLE storage_drive (
     serial_number varchar(12) NOT NULL, 
-    name varchar(50) NOT NULL, 
+    name varchar(50), 
     case_sn varchar(12) NOT NULL, 
     capacity int NOT NULL CHECK (capacity > 0), 
     interface varchar(4) NOT NULL, 
@@ -100,7 +100,7 @@ CREATE TABLE storage_drive (
 
 CREATE TABLE random_access_memory (
     serial_number varchar(12) NOT NULL, 
-    name varchar(50) NOT NULL, 
+    name varchar(50), 
     motherboard_sn varchar(12) NOT NULL, 
     capacity int NOT NULL, 
     number_of_modules int NOT NULL CHECK (number_of_modules > 0), 
@@ -165,9 +165,10 @@ WHERE serial_number LIKE "R-%"
 AND motherboard_sn LIKE "R-%";
 
 #Create roles for different access levels
-#CREATE ROLE staff;
-#CREATE ROLE customer;
-#GRANT SELECT ON Doctor_Restricted TO staff with GRANT OPTION;
+CREATE ROLE staff;
+CREATE ROLE customer;
+
+#Set permissions for staff
 GRANT ALL ON motherboard TO staff;
 GRANT ALL ON central_processing_unit TO staff;
 GRANT ALL ON cpu_cooler TO staff;
@@ -186,7 +187,7 @@ GRANT ALL ON computer_case_released TO staff;
 GRANT ALL ON storage_drive_released TO staff;
 GRANT ALL ON random_access_memory_released TO staff;
 
-
+#Set permissions for customer
 GRANT SELECT ON motherboard_released TO customer;
 GRANT SELECT ON central_processing_unit_released TO customer;
 GRANT SELECT ON cpu_cooler_released TO customer;
@@ -195,6 +196,17 @@ GRANT SELECT ON power_supply_released TO customer;
 GRANT SELECT ON computer_case_released TO customer;
 GRANT SELECT ON storage_drive_released TO customer;
 GRANT SELECT ON random_access_memory_released TO customer;
+
+#Create semantic constraints
+#Trigger will set the names of inserted cpus that are null
+CREATE TRIGGER set_default_cpu_name BEFORE UPDATE ON central_processing_unit
+     FOR EACH ROW
+     BEGIN
+         IF NEW.name IS NULL THEN
+             SET NEW.name = "undecided";
+         END IF;
+    END;
+
 
 
 #Insert entries into the motherboard table
