@@ -1,3 +1,5 @@
+#An sql database that represents computers and how their parts fit together
+
 DROP DATABASE IF EXISTS computerparts;
 CREATE DATABASE computerparts;
 USE computerparts;
