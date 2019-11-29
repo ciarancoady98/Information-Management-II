@@ -234,3 +234,20 @@ INSERT INTO storage_drive (
 INSERT INTO storage_drive (
     serial_number, name, case_sn, capacity, interface, form_factor)
     VALUES ("S123456785", "Intel 730", "CE12345675", 240, "sata", "2.5inch");
+
+#Insert entries into ram table
+INSERT INTO random_access_memory (
+    serial_number, name, motherboard_sn, capacity, number_of_modules, type)
+    VALUES ("R123456781", "Corsair Vengeance LPX", "M123456781", 16, 2, "ddr4");
+INSERT INTO random_access_memory (
+    serial_number, name, motherboard_sn, capacity, number_of_modules, type)
+    VALUES ("R123456782", "G Skill Ripjaws", "M123456782", 8, 1, "ddr3");
+INSERT INTO random_access_memory (
+    serial_number, name, motherboard_sn, capacity, number_of_modules, type)
+    VALUES ("R123456783", "Corsair Vengeance RGB", "M123456783", 16, 2, "ddr4");
+INSERT INTO random_access_memory (
+    serial_number, name, motherboard_sn, capacity, number_of_modules, type)
+    VALUES ("R123456784", "Corsair Vengeance LPX", "M123456784", 128, 8, "ddr4");
+INSERT INTO random_access_memory (
+    serial_number, name, motherboard_sn, capacity, number_of_modules, type)
+    VALUES ("R123456785", "Crucial Ballistix LT", "M123456785", 32, 2, "ddr4");
