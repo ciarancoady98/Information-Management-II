@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS computerparts;
 CREATE DATABASE computerparts;
 USE computerparts;
 
+#Define tables and constraints 
 CREATE TABLE motherboard (
     serial_number varchar(12) NOT NULL, 
     name varchar(50), 
@@ -162,6 +163,39 @@ AS SELECT serial_number, name, motherboard_sn, capacity, number_of_modules, type
 FROM random_access_memory 
 WHERE serial_number LIKE "R-%"
 AND motherboard_sn LIKE "R-%";
+
+#Create roles for different access levels
+#CREATE ROLE staff;
+#CREATE ROLE customer;
+#GRANT SELECT ON Doctor_Restricted TO staff with GRANT OPTION;
+GRANT ALL ON motherboard TO staff;
+GRANT ALL ON central_processing_unit TO staff;
+GRANT ALL ON cpu_cooler TO staff;
+GRANT ALL ON graphics_processing_unit TO staff;
+GRANT ALL ON power_supply TO staff;
+GRANT ALL ON computer_case TO staff;
+GRANT ALL ON storage_drive TO staff;
+GRANT ALL ON random_access_memory TO staff;
+GRANT ALL ON cooling TO staff;
+GRANT ALL ON motherboard_released TO staff;
+GRANT ALL ON central_processing_unit_released TO staff;
+GRANT ALL ON cpu_cooler_released TO staff;
+GRANT ALL ON graphics_processing_unit_released TO staff;
+GRANT ALL ON power_supply_released TO staff;
+GRANT ALL ON computer_case_released TO staff;
+GRANT ALL ON storage_drive_released TO staff;
+GRANT ALL ON random_access_memory_released TO staff;
+
+
+GRANT SELECT ON motherboard_released TO customer;
+GRANT SELECT ON central_processing_unit_released TO customer;
+GRANT SELECT ON cpu_cooler_released TO customer;
+GRANT SELECT ON graphics_processing_unit_released TO customer;
+GRANT SELECT ON power_supply_released TO customer;
+GRANT SELECT ON computer_case_released TO customer;
+GRANT SELECT ON storage_drive_released TO customer;
+GRANT SELECT ON random_access_memory_released TO customer;
+
 
 #Insert entries into the motherboard table
 INSERT INTO motherboard (
