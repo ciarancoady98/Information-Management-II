@@ -223,6 +223,12 @@ INSERT INTO cpu_cooler (
 INSERT INTO cpu_cooler (
     serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
     VALUES ("R-CC12345675", "NZXT Kraken", "R-M123456785", 2200, 20, "am4");
+INSERT INTO cpu_cooler (
+    serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
+    VALUES ("U-CC1234567x", "LN2 pt1", "U-M123456786", 1000, 5, "lga2066");
+INSERT INTO cpu_cooler (
+    serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
+    VALUES ("U-CC1234567y", "LN2 pt2", "U-M123456786", 1000, 5, "lga2066");
 
     #Insert entries into the gpu table
 INSERT INTO graphics_processing_unit (
