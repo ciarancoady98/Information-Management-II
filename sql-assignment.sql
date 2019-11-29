@@ -179,6 +179,9 @@ INSERT INTO motherboard (
 INSERT INTO motherboard (
     serial_number, name , ram_slots, ram_type, form_factor, socket) 
     VALUES ("R-M123456785", "Aorus pro ac wifi ", 2, "ddr4", "m-itx", "am4");
+INSERT INTO motherboard (
+    serial_number, name , ram_slots, ram_type, form_factor, socket) 
+    VALUES ("U-M123456786", "Project X dual socket board", 8, "ddr4", "e-atx", "lga2066");
 
 #Insert entries into the cpu table
 INSERT INTO central_processing_unit (
@@ -196,6 +199,13 @@ INSERT INTO central_processing_unit (
 INSERT INTO central_processing_unit (
     serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
     VALUES ("R-C123456785", "Amd Ryzen 7 1800x", "R-M123456785", 95, 8, "yes", "am4");
+INSERT INTO central_processing_unit (
+    serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
+    VALUES ("U-C123456786", "Cascade Lake-AP", "U-M123456786", 200, 64, "yes", "lga2066");
+INSERT INTO central_processing_unit (
+    serial_number, name, motherboard_sn, tdp, core_count, smt, socket)
+    VALUES ("U-C123456787", "Cascade Lake-AP", "U-M123456786", 200, 64, "yes", "lga2066");
+
 
 #Insert entries into the cpu cooler table
 INSERT INTO cpu_cooler (
