@@ -251,3 +251,15 @@ INSERT INTO random_access_memory (
 INSERT INTO random_access_memory (
     serial_number, name, motherboard_sn, capacity, number_of_modules, type)
     VALUES ("R123456785", "Crucial Ballistix LT", "M123456785", 32, 2, "ddr4");
+
+#Insert enties into the cooling table to link cpus and coolers together
+INSERT INTO cooling (cpu_sn, cooler_sn)
+    VALUES ("C123456781", "M123456781");
+INSERT INTO cooling (cpu_sn, cooler_sn)
+    VALUES ("C123456782", "M123456782");
+INSERT INTO cooling (cpu_sn, cooler_sn)
+    VALUES ("C123456783", "M123456783");
+INSERT INTO cooling (cpu_sn, cooler_sn)
+    VALUES ("C123456784", "M123456784");
+INSERT INTO cooling (cpu_sn, cooler_sn)
+    VALUES ("C123456785", "M123456785");
