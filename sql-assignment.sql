@@ -203,4 +203,16 @@ INSERT INTO power_supply (
 #Insert entries into the case table
 INSERT INTO computer_case (
     serial_number, name, motherboard_sn, psu_sn, gpu_space, storage_bays)
-    VALUES ("CE12345671", "Fractal Design Define S", "M123456781", "P123456781", "400", "2.5inch")
+    VALUES ("CE12345671", "Fractal Design Define S", "M123456781", "P123456781", "400", "2.5inch");
+INSERT INTO computer_case (
+    serial_number, name, motherboard_sn, psu_sn, gpu_space, storage_bays)
+    VALUES ("CE12345672", "Fractal Design Define R5", "M123456782", "P123456782", "310", "3.5inch");
+INSERT INTO computer_case (
+    serial_number, name, motherboard_sn, psu_sn, gpu_space, storage_bays)
+    VALUES ("CE12345673", "Zalman z11 plus", "M123456783", "P123456783", "290", "3.5inch");
+INSERT INTO computer_case (
+    serial_number, name, motherboard_sn, psu_sn, gpu_space, storage_bays)
+    VALUES ("CE12345674", "Nzxt h440", "M123456784", "P123456784", "294", "3.5inch");
+INSERT INTO computer_case (
+    serial_number, name, motherboard_sn, psu_sn, gpu_space, storage_bays)
+    VALUES ("CE12345675", "Ncase M1", "M123456785", "P123456785", "280", "2.5inch");
