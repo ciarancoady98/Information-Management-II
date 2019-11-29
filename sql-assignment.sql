@@ -54,32 +54,32 @@ CREATE TABLE graphics_processing_unit (
     ON UPDATE CASCADE
     );
 
+CREATE TABLE power_supply (
+    serial_number varchar(10) NOT NULL, 
+    name varchar(50) NOT NULL, 
+    wattage int NOT NULL, 
+    modular varchar(3) NOT NULL, 
+    efficiency_rating varchar(8) NOT NULL, 
+    form_factor varchar(5) NOT NULL,
+    PRIMARY KEY (serial_number)
+    );
+
 CREATE TABLE computer_case (
     serial_number varchar(10) NOT NULL, 
     name varchar(50) NOT NULL, 
     motherboard_sn varchar(10) NOT NULL, 
     psu_sn varchar(10) NOT NULL, 
     gpu_space int NOT NULL, 
-    storage_bays int NOT NULL,
+    storage_bays varchar(7) NOT NULL,
     PRIMARY KEY (serial_number),
     FOREIGN KEY (motherboard_sn) 
     REFERENCES motherboard(serial_number)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
     FOREIGN KEY (psu_sn) 
-    REFERENCES motherboard(serial_number)
+    REFERENCES power_supply(serial_number)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-    );
-
-CREATE TABLE power_supply (
-    serial_number varchar(10) NOT NULL, 
-    name varchar(50) NOT NULL, 
-    wattage int NOT NULL, 
-    modular int NOT NULL, 
-    efficiency_rating int NOT NULL, 
-    form_factor varchar(4) NOT NULL,
-    PRIMARY KEY (serial_number)
     );
 
 CREATE TABLE storage_drive (
@@ -165,3 +165,42 @@ INSERT INTO cpu_cooler (
 INSERT INTO cpu_cooler (
     serial_number, name, motherboard_sn, fan_rpm, noise_level, socket)
     VALUES ("CC12345675", "NZXT Kraken", "M123456785", 2200, 20, "am4");
+
+    #Insert entries into the gpu table
+INSERT INTO graphics_processing_unit (
+    serial_number, name, motherboard_sn, core_clock, memory, gpu_length)
+    VALUES ("G123456781", "Asus Geforce Gtx 970", "M123456781", 1114, 4, 280);
+INSERT INTO graphics_processing_unit (
+    serial_number, name, motherboard_sn, core_clock, memory, gpu_length)
+    VALUES ("G123456782", "Gigabyte Geforce Gtx 650ti", "M123456782", 928, 1, 144);
+INSERT INTO graphics_processing_unit (
+    serial_number, name, motherboard_sn, core_clock, memory, gpu_length)
+    VALUES ("G123456783", "Nvidia Quadro GV100", "M123456783", 1132, 32, 266);
+INSERT INTO graphics_processing_unit (
+    serial_number, name, motherboard_sn, core_clock, memory, gpu_length)
+    VALUES ("G123456784", "Amd Radeon VII", "M123456784", 1400, 16, 305);
+INSERT INTO graphics_processing_unit (
+    serial_number, name, motherboard_sn, core_clock, memory, gpu_length)
+    VALUES ("G123456785", "Amd r9 290x", "M123456785", 1000, 4, 276);
+
+#Insert entries into the psu table
+INSERT INTO power_supply (
+    serial_number, name, wattage, modular, efficiency_rating, form_factor)
+    VALUES ("P123456781", "Corsair cx600m", 600, "yes", "bronze", "atx");
+INSERT INTO power_supply (
+    serial_number, name, wattage, modular, efficiency_rating, form_factor)
+    VALUES ("P123456782", "Evga br500", 500, "no", "bronze", "atx");
+INSERT INTO power_supply (
+    serial_number, name, wattage, modular, efficiency_rating, form_factor)
+    VALUES ("P123456783", "Corsair rm850x", 850, "yes", "gold", "atx");
+INSERT INTO power_supply (
+    serial_number, name, wattage, modular, efficiency_rating, form_factor)
+    VALUES ("P123456784", "Corsair ax1200i", 1200, "yes", "platinum", "atx");
+INSERT INTO power_supply (
+    serial_number, name, wattage, modular, efficiency_rating, form_factor)
+    VALUES ("P123456785", "Silverstone SX600G", 600, "yes", "gold", "m-itx");
+
+#Insert entries into the case table
+INSERT INTO computer_case (
+    serial_number, name, motherboard_sn, psu_sn, gpu_space, storage_bays)
+    VALUES ("CE12345671", "Fractal Design Define S", "M123456781", "P123456781", "400", "2.5inch")
