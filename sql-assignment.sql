@@ -117,7 +117,51 @@ CREATE TABLE cooling (
     PRIMARY KEY (cpu_sn, cooler_sn));
 
 #Create restricted views for security and different access levels
-CREATE VIEW motherboard_released AS SELECT serial_number, name , ram_slots, ram_type, form_factor, socket FROM motherboard WHERE serial_number LIKE "R-%";
+CREATE VIEW motherboard_released 
+AS SELECT serial_number, name , ram_slots, ram_type, form_factor, socket 
+FROM motherboard 
+WHERE serial_number LIKE "R-%";
+
+CREATE VIEW central_processing_unit_released 
+AS SELECT serial_number, name, motherboard_sn, tdp, core_count, smt, socket 
+FROM central_processing_unit 
+WHERE serial_number LIKE "R-%" 
+AND motherboard_sn LIKE "R-%";
+
+CREATE VIEW cpu_cooler_released 
+AS SELECT serial_number, name, motherboard_sn, fan_rpm, noise_level, socket 
+FROM cpu_cooler 
+WHERE serial_number LIKE "R-%"
+AND motherboard_sn LIKE "R-%";
+
+CREATE VIEW graphics_processing_unit_released 
+AS SELECT serial_number, name, motherboard_sn, core_clock, memory, gpu_length 
+FROM graphics_processing_unit 
+WHERE serial_number LIKE "R-%"
+AND motherboard_sn LIKE "R-%";
+
+CREATE VIEW power_supply_released 
+AS SELECT serial_number, name, wattage, modular, efficiency_rating, form_factor 
+FROM power_supply 
+WHERE serial_number LIKE "R-%";
+
+CREATE VIEW computer_case_released 
+AS SELECT serial_number, name, motherboard_sn, psu_sn, gpu_space, storage_bays 
+FROM computer_case 
+WHERE serial_number LIKE "R-%"
+AND motherboard_sn LIKE "R-%"
+AND psu_sn LIKE "R-%";
+
+CREATE VIEW storage_drive_released 
+AS SELECT serial_number, name, case_sn, capacity, interface, form_factor 
+FROM storage_drive 
+WHERE serial_number LIKE "R-%";
+
+CREATE VIEW random_access_memory_released 
+AS SELECT serial_number, name, motherboard_sn, capacity, number_of_modules, type 
+FROM random_access_memory 
+WHERE serial_number LIKE "R-%"
+AND motherboard_sn LIKE "R-%";
 
 #Insert entries into the motherboard table
 INSERT INTO motherboard (
