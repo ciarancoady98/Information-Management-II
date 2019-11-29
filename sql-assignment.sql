@@ -1,4 +1,4 @@
-DROP DATABASE [IF EXISTS] computerparts;
+DROP DATABASE IF EXISTS computerparts;
 CREATE DATABASE computerparts;
 USE computerparts;
 
@@ -116,20 +116,7 @@ CREATE TABLE cooling (
     cooler_sn varchar(12) NOT NULL,
     PRIMARY KEY (cpu_sn, cooler_sn));
 
-CREATE OR REPLACE TRIGGER check_compatible_sockets
-BEFORE INSERT OR UPDATE ON central_processing_unit
-FOR EACH ROW
-WHEN(OLD.patient_pps IS NOT NULL)
-DECLARE
-var_id varchar(10);
-BEGIN
-var_id := :OLD.patient_pps;
-DELETE FROM Appointment
-WHERE patient_id = var_id;
-END UpdatePatientApptReference;
-.
-run;
-
+#Create restricted views for security and different access levels
 CREATE VIEW motherboard_released AS SELECT serial_number, name , ram_slots, ram_type, form_factor, socket FROM motherboard WHERE serial_number LIKE "R-%";
 
 #Insert entries into the motherboard table
