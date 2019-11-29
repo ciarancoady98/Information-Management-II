@@ -4,7 +4,8 @@ USE computerparts;
 
 CREATE TABLE motherboard (
     serial_number varchar(10) NOT NULL, 
-    name varchar(50), ram_slots int NOT NULL, 
+    name varchar(50), 
+    ram_slots int NOT NULL CHECK (ram_slots > 0), 
     ram_type varchar(4) NOT NULL, 
     form_factor varchar(5) NOT NULL, 
     socket varchar(10) NOT NULL,
@@ -16,7 +17,7 @@ CREATE TABLE central_processing_unit (
     name varchar(50) NOT NULL, 
     motherboard_sn varchar(10) NOT NULL,
     tdp int NOT NULL, 
-    core_count int NOT NULL, 
+    core_count int NOT NULL CHECK (core_count > 0), 
     smt varchar(3) NOT NULL, 
     socket varchar(10) NOT NULL,
     PRIMARY KEY (serial_number),
@@ -46,7 +47,7 @@ CREATE TABLE graphics_processing_unit (
     motherboard_sn varchar(10) NOT NULL, 
     core_clock int NOT NULL, 
     memory int NOT NULL, 
-    gpu_length int NOT NULL,
+    gpu_length int NOT NULL CHECK (gpu_length > 0),
     PRIMARY KEY (serial_number),
     FOREIGN KEY (motherboard_sn) 
     REFERENCES motherboard(serial_number)
@@ -86,7 +87,7 @@ CREATE TABLE storage_drive (
     serial_number varchar(10) NOT NULL, 
     name varchar(50) NOT NULL, 
     case_sn varchar(10) NOT NULL, 
-    capacity int NOT NULL, 
+    capacity int NOT NULL CHECK (capacity > 0), 
     interface varchar(4) NOT NULL, 
     form_factor varchar(7) NOT NULL,
     PRIMARY KEY (serial_number),
@@ -101,7 +102,7 @@ CREATE TABLE random_access_memory (
     name varchar(50) NOT NULL, 
     motherboard_sn varchar(10) NOT NULL, 
     capacity int NOT NULL, 
-    number_of_modules int NOT NULL, 
+    number_of_modules int NOT NULL CHECK (number_of_modules > 0), 
     type varchar(4) NOT NULL,
     PRIMARY KEY (serial_number),
     FOREIGN KEY (motherboard_sn) 
